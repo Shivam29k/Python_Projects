@@ -31,11 +31,9 @@ while game_is_on:
         ball.bounce_y()
 
     # detect collision with paddle
-    if ball.distance(right_paddle) < 50 and ball.xcor() > 330 or ball.distance(left_paddle) < 50 and ball.xcor() < -330:
-        # print("hit hua") 
+    if ball.distance(right_paddle) < 50 and ball.xcor() > 330 or ball.distance(left_paddle) < 50 and ball.xcor() < -3: 
         ball.bounce_x()
         ball.inc_spd()
-        # print(f"{ball.spd}")
 
     # detect when paddle misses
     if ball.xcor() > 380:
@@ -46,6 +44,7 @@ while game_is_on:
         ball.reset_position()
         scoreboard.r_point()
 
+    # When Game is over    
     if scoreboard.game_over():
         game_is_on = False
 
