@@ -1,0 +1,1 @@
+command=find_password(),
