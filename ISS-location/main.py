@@ -11,7 +11,6 @@ MY_LATITUDE = 30.717499
 MY_LONGITUDE = 76.761700
 
 
-# ------------------------------------------- getiing ISS location --------------------------------------------
 # ------------------------------------------- day or night  --------------------------------------------
 
 def is_night():
@@ -44,6 +43,7 @@ def is_night():
         print("Day")
         return False
     
+# ------------------------------------------- getiing ISS location --------------------------------------------
 def iss_nearby():
     response = requests.get(url="http://api.open-notify.org/iss-now.json")
     response.raise_for_status()
