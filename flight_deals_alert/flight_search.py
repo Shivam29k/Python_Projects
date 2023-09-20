@@ -38,7 +38,7 @@ class FlightSearch:
                         if nearby['distance'] < distance:
                             distance = nearby['distance']
                             nearby_citycode = nearby['id']
-                    return nearby_citycode 
+                    return nearby_citycode
                 elif city_code == None:
                     return "City not found"
                 return city_code
@@ -46,7 +46,7 @@ class FlightSearch:
                 return "City not found"
         else:
             return f"Error occurd: {response.raise_for_status}"
-        
+
     def find_flights(self, origin_city_code,destination_city_code):
         presentday = datetime.now()
         tomorrow_date = presentday + timedelta(1)
@@ -85,7 +85,3 @@ class FlightSearch:
         print(f"{flight_data.destination_city}: ₹{flight_data.price}")
         return flight_data
         # print(f"{arrival_city}: {}")
-
-
-
-

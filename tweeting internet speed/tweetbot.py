@@ -13,7 +13,7 @@ class Tweetbot():
     def __init__(self):
 
         self.driver = webdriver.Chrome()
-        self.driver.get('https://twitter.com/homes')
+        self.driver.get('https://twitter.com/home')
         sleep(5)
         self.login()
 

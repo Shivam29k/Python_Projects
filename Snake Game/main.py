@@ -16,9 +16,13 @@ scoreboard = Scoreboard()
 
 screen.listen()
 screen.onkey(snake.up, "Up")
+screen.onkey(snake.up, "w")
 screen.onkey(snake.down, "Down")
+screen.onkey(snake.down, "s")
 screen.onkey(snake.left, "Left")
+screen.onkey(snake.left, "a")
 screen.onkey(snake.right, "Right")
+screen.onkey(snake.right, "d")
 
 game_is_on = True
 
@@ -33,8 +37,8 @@ while game_is_on:
         scoreboard.increase_score()
         snake.extend()
         # print((snake.segments[-1].position()))
-        food.refresh()    
-    
+        food.refresh()
+
     if snake.head.xcor() < -282 or snake.head.xcor() > 282 or snake.head.ycor() < -282 or snake.head.ycor() > 282:
         game_is_on = False
         scoreboard.game_over()
@@ -46,7 +50,7 @@ while game_is_on:
             # print("Touch hua")
             game_is_on = False
             scoreboard.game_over()
-    
+
 
 
 screen.exitonclick()

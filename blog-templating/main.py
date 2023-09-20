@@ -1,18 +1,22 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, globals
 import requests
 
 app = Flask(__name__)
 
+@app.before_request
+def before_request():
+    request = requests.get(url='https://api.npoint.io/c790b4d5cab58020d391')
+    globals.g.data = request.json()
+
+
 @app.route('/')
 def home():
-    request = requests.get(url='https://api.npoint.io/c790b4d5cab58020d391')
-    data = request.json()
+    data = globals.g.data
     return render_template("index.html", content = data)
 
-@app.route('/post/<id>')
+@app.route('/post/<int:id>')
 def post(id):
-    request = requests.get(url='https://api.npoint.io/c790b4d5cab58020d391')
-    data = request.json()[int(id)-1]
+    data = globals.g.data[id-1]
     return render_template('post.html', post = data)
 
 if __name__ == "__main__":

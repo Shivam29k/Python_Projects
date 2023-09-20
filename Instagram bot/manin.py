@@ -10,7 +10,7 @@ load_dotenv()
 
 INTSA_USERNAME = os.getenv('insta_username')
 INSTA_PASS = os.getenv('pass')
-TARGERT_UID_LIST = ['swiggyindia', 'virat.kohli']
+TARGERT_UID_LIST = ['virat.kohli']
 
 driver = webdriver.Chrome()
 driver.get('https://www.instagram.com/')
@@ -29,6 +29,7 @@ class Follow():
         self.driver = driver
         self.driver.get(f'https://www.instagram.com/{target_uid}/followers/')
         sleep(8)
+        print("sleeep for 8 sc")
 
     def start_following(self):
 

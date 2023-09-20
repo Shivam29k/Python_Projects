@@ -11,8 +11,8 @@ class Car_manager(Turtle):
         self.car_speed = 5
         self.all_cars = []
 
-    def create_car(self):
-        random_chance = random.randint(1,6)
+    def create_car(self, level):
+        random_chance = random.randint(1,6-level)
         if random_chance == 1:
             new_car = Turtle()
             new_car.shape("square")
@@ -22,14 +22,12 @@ class Car_manager(Turtle):
             new_car.setheading(180)
             new_car.shapesize(stretch_wid=1, stretch_len=2)
             self.all_cars.append(new_car)
-        
-    
+
+
 
     def move_car(self):
         for car in self.all_cars:
             car.forward(self.car_speed)
-    
+
     def inc_car_speed(self):
         self.car_speed += (self.car_speed*0.5)
-
-      
