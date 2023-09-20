@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Select Movie{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="heading">Select Movie</h1>
+  {% for movie in movies %}
+  <p>
+    <img src="https://image.tmdb.org/t/p/w220_and_h330_face{{movie.poster_path}}" alt="">
+    <a href="{{url_for('addindb', movieid=movie.id)}}"> {{movie.title}} - {{movie.release_date}}</a>
+  </p>
+  {% endfor %}
+
+</div>
+{% endblock %}
