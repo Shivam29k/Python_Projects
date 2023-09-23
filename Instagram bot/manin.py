@@ -12,7 +12,8 @@ INTSA_USERNAME = os.getenv('insta_username')
 INSTA_PASS = os.getenv('pass')
 TARGERT_UID_LIST = ['virat.kohli']
 
-driver = webdriver.Chrome()
+# driver = webdriver.Chrome(executable_path='/path/to/new/chromedriver')
+driver = webdriver.Firefox()
 driver.get('https://www.instagram.com/')
 sleep(5)
 username = driver.find_element(By.CSS_SELECTOR, '[name="username"]')
@@ -22,7 +23,7 @@ password = driver.find_element(By.CSS_SELECTOR, '[name="password"]')
 password.send_keys(INSTA_PASS)
 sleep(2)
 password.send_keys(Keys.ENTER)
-sleep(5)
+sleep(10)
 
 class Follow():
     def __init__(self, driver, target_uid):
