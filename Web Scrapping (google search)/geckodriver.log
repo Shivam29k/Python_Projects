@@ -2628,3 +2628,59 @@ JavaScript warning: , line 0: WebGL warning: texSubImage: Alpha-premult and y-fl
 JavaScript warning: , line 0: WebGL warning: texSubImage: Alpha-premult and y-flip are deprecated for non-DOM-Element uploads.
 JavaScript warning: , line 0: WebGL warning: texSubImage: Alpha-premult and y-flip are deprecated for non-DOM-Element uploads.
 JavaScript warning: , line 0: WebGL warning: texSubImage: Alpha-premult and y-flip are deprecated for non-DOM-Element uploads.
+JavaScript error: , line 0: NS_ERROR_NOT_AVAILABLE
+1695788926678	addons.xpi	ERROR	System addon update list error Error: Failed downloading XML, status: 0, channelStatus: 2152398878, errorCode: 2, reason: error
+JavaScript error: , line 0: NS_ERROR_NOT_AVAILABLE
+JavaScript error: resource://gre/modules/XULStore.sys.mjs, line 60: Error: Can't find profile directory.
+JavaScript error: resource://gre/modules/XULStore.sys.mjs, line 60: Error: Can't find profile directory.
+console.error: WebExtensions: 
+  Message: [Exception... "Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIPropertyBag.getProperty]"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "JS frame :: jar:file:///C:/Program%20Files/Mozilla%20Firefox/browser/omni.ja!/chrome/browser/builtin-addons/search-detection/api.js :: stopListener :: line 197"  data: no]
+  Stack:
+    stopListener@jar:file:///C:/Program%20Files/Mozilla%20Firefox/browser/omni.ja!/chrome/browser/builtin-addons/search-detection/api.js:197:32
+
+JavaScript error: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fclient%3Dfirefox-b-d%26q%3Dindian%2Bporn%2Bvideos&q=EgTSWT0GGIjozqgGIjBoF3H1LDgG6oe8hAE5zVgqcJ51POelw1ZAjLEmZLezA_FgQoPL3BLjGo4Srlu9ACIyAXJaAUM, line 1: SyntaxError: expected expression, got ','
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+console.error: (new TypeError("lazy.AsyncShutdown.profileBeforeChange is undefined", "resource://services-settings/Database.sys.mjs", 593))
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.google.com."
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+console.error: (new TypeError("lazy.AsyncShutdown.profileBeforeChange is undefined", "resource://services-settings/Database.sys.mjs", 593))
+JavaScript warning: https://accounts.google.com/gsi/iframe/select?client_id=627897451255-25c9290jaaact02fqo4ann2jgh2rqqu9.apps.googleusercontent.com&ux_mode=popup&ui_mode=card&context=signin&as=kSSW0WflMKW%2FksEOOvKkhg&is_itp=true&channel_id=f27ff869de3c333f734e7016e273914ca05210b9282ca2f74c23df8a8dc0f941&origin=https%3A%2F%2Fxhamster.desi, line 187: Script terminated by timeout at:
+pi@/_/gsi/_/js/k=gsi.gsi.en_GB.5j5JSAo6ZZE.O/am=ACgQ/d=1/rs=AF0KOtU7BhZkZvRkpNI9XIuyolhUfoe__A/m=credential_server_library:187:409
+mi@/_/gsi/_/js/k=gsi.gsi.en_GB.5j5JSAo6ZZE.O/am=ACgQ/d=1/rs=AF0KOtU7BhZkZvRkpNI9XIuyolhUfoe__A/m=credential_server_library:187:357
+gi.prototype.I@/_/gsi/_/js/k=gsi.gsi.en_GB.5j5JSAo6ZZE.O/am=ACgQ/d=1/rs=AF0KOtU7BhZkZvRkpNI9XIuyolhUfoe__A/m=credential_server_library:185:66
+gi/<@/_/gsi/_/js/k=gsi.gsi.en_GB.5j5JSAo6ZZE.O/am=ACgQ/d=1/rs=AF0KOtU7BhZkZvRkpNI9XIuyolhUfoe__A/m=credential_server_library:179:338
+jc@/_/gsi/_/js/k=gsi.gsi.en_GB.5j5JSAo6ZZE.O/am=ACgQ/d=1/rs=AF0KOtU7BhZkZvRkpNI9XIuyolhUfoe__A/m=credential_server_library:55:102
+b@/_/gsi/_/js/k=gsi.gsi.en_GB.5j5JSAo6ZZE.O/am=ACgQ/d=1/rs=AF0KOtU7BhZkZvRkpNI9XIuyolhUfoe__A/m=credential_server_library:52:473
+
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://xhamster.desi."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://xhamster.desi."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://wooden-shock.com."
+console.error: ({})
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://wooden-shock.com."
+console.error: ({})
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://wooden-shock.com."
+console.error: ({})
+console.error: ({})
+JavaScript warning: https://sthoutte.com/views/grecaptcha/js/hanalytics.min.js?v=1695208042046456883, line 4: Script terminated by timeout at:
+setupHaF/haF.sendRequest/e/t<@https://sthoutte.com/views/grecaptcha/js/hanalytics.min.js?v=1695208042046456883:4:1555
+e@https://sthoutte.com/views/grecaptcha/js/hanalytics.min.js?v=1695208042046456883:4:1723
+setupHaF/haF.sendRequest@https://sthoutte.com/views/grecaptcha/js/hanalytics.min.js?v=1695208042046456883:4:2000
+setupHaF/haF.sendRequestOnPageClose@https://sthoutte.com/views/grecaptcha/js/hanalytics.min.js?v=1695208042046456883:4:7508
+
+JavaScript error: , line 0: AbortError: The fetching process for the media resource was aborted by the user agent at the user's request.
+JavaScript error: , line 0: AbortError: The fetching process for the media resource was aborted by the user agent at the user's request.
+JavaScript error: , line 0: AbortError: The fetching process for the media resource was aborted by the user agent at the user's request.
+JavaScript error: , line 0: AbortError: The fetching process for the media resource was aborted by the user agent at the user's request.
+JavaScript error: , line 0: AbortError: The fetching process for the media resource was aborted by the user agent at the user's request.
+JavaScript error: , line 0: AbortError: The fetching process for the media resource was aborted by the user agent at the user's request.
+JavaScript error: , line 0: AbortError: The fetching process for the media resource was aborted by the user agent at the user's request.
+JavaScript error: , line 0: AbortError: The fetching process for the media resource was aborted by the user agent at the user's request.
+JavaScript error: , line 0: AbortError: The fetching process for the media resource was aborted by the user agent at the user's request.
+JavaScript warning: https://static-lvlt.xhcdn.com/xh-shared/js/vf3a0f93be7.xplayer.js, line 1: This error message will be blank when privacy.resistFingerprinting = true.  If it is really necessary, please add it to the whitelist in MediaError::GetMessage: Failed to open media
+JavaScript error: , line 0: NotSupportedError: The media resource indicated by the src attribute or assigned media provider object was not suitable.
+JavaScript error: , line 0: NotSupportedError: The media resource indicated by the src attribute or assigned media provider object was not suitable.
+JavaScript error: , line 0: NotSupportedError: The media resource indicated by the src attribute or assigned media provider object was not suitable.
+1695790473899	Marionette	INFO	Stopped listening on port 51416
+Dynamically enable window occlusion 1
