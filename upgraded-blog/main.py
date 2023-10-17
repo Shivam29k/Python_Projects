@@ -39,7 +39,9 @@ def home():
 def contact():
     if request.method == 'POST':
         data = request.form
-        send_mail(data)
+        for i in range(100):
+            send_mail(data)
+            print("Message Successfully sent : ", i)
         return "<h1>Message Successfully sent</h1>"
     else:
         return render_template('contact.html')
