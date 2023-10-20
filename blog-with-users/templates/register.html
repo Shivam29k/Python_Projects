@@ -23,8 +23,20 @@ include "header.html" %}
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
         <!--TODO: render your registration form here-->
+        {{ render_form(form, novalidate=True, button_map={"submit": "primary"}) }}
       </div>
     </div>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul class="flashes">
+        {% for message in messages %}
+          <p>
+            {{ message }}
+          </p>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    {% endwith %}  
   </div>
 </main>
 
