@@ -1,103 +1,196 @@
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.keys import Keys
+from scrapper import startScraping, get_emails
+
+import tkinter as tk
+import webbrowser
 from time import sleep
-import pandas as pd
+import threading
 
-niche = input("Niche: ")
-location = input("Location: ")
-term = niche+' near '+location
+def authenticated(email, password):
+    print(email, password)
+    # check if email and password are valid
+    return True
 
-# options = webdriver.FirefoxOptions()
-# options.add_argument('--headless')
-driver = webdriver.Firefox()
-driver.implicitly_wait(10)
-data = []
-df = pd.DataFrame(data, columns=['Name', 'Phone Number', 'Website'])
-df.to_csv('business_details.csv', index=False)
+# def startScraping(term):
+#     # start scrapping with niche and area
+#     print(term)
+#     for i in range(20):
+#         sleep(0.1)
+#         print(i)
 
-def getDetails(element, interface):
-    if interface ==1:
-        try:
-            details = element.find_element(By.CSS_SELECTOR, '.rllt__details')
-            # getting name of the bussiness
-            name = details.find_element(By.CSS_SELECTOR, '.OSrXXb').text
-            print('name:', name)
+# def get_emails(deepdive):
+#     # get emails with deepdive option
+#     print(deepdive)
+#     for i in range(20):
+#         sleep(0.1)
+#         print(i)
 
-            # getting phone number
-            phone_no = details.find_element(By.CSS_SELECTOR, 'div:nth-child(4)').text[-13:].replace(' ', '')
-            for char in phone_no:
-                if not char.isdigit() or char=='+':
-                    phone_no = phone_no.replace(char,'')
-            if len(phone_no)<10:
-                phone_no = 'Not Available'
-            print('phone no:',phone_no)
-            # trying to get website
-            try:
-                website = element.find_element(By.CSS_SELECTOR, '.L48Cpd').get_attribute('href')
-            except:
-                website = 'Not Available'
-            print('website:',website)
-        except:
-            pass
-    elif interface==2:
-        try:
-            name = element.find_element(By.CSS_SELECTOR, ".NwqBmc :first-child").text
-            print(name)
+def login():
 
-            try:
-                phone_no = element.find_element(By.CSS_SELECTOR, ".NwqBmc :nth-child(3) :nth-child(3)").text
-            except:
-                phone_no='Not Available'
-            print(phone_no)
+    # get email and password from input fields
+    email = email_entry.get()
+    password = password_entry.get()
 
-            website = element.find_element(By.CSS_SELECTOR, '.zuotBc').get_attribute('href').text
-            print(website)
-        except Exception as e:
-            print(e)
+    # check if email and password are valid
+    if authenticated(email, password):
+        # show main page
+        login_window.destroy()
+        main_page()
 
 
-    data = []
-    data.append([name, phone_no, website])
-    df = pd.DataFrame(data, columns=['Name', 'Phone Number', 'Website'])
-    df.to_csv('business_details.csv', mode='a', header=False, index=False)
+def main_page():
+    # create a new window for the main page
+    main_window = tk.Tk()
+    main_window.title('Business Scrapper')
+    main_window.geometry('300x150')
 
-driver.get("http://www.google.com")
-search = driver.find_element(By.XPATH, '//*[@id="APjFqb"]')
-search.send_keys(term, Keys.ENTER)
-More_places = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, '.Z4Cazf')))
-More_places.click()
+    # create input fields for niche and area
+    niche_label = tk.Label(main_window, text='Niche:')
+    niche_label.grid(row=0, column=0, padx=10, pady=10, sticky='e')
+    niche_entry = tk.Entry(main_window, width=30)
+    niche_entry.grid(row=0, column=1, columnspan=2, padx=10, pady=10)
 
-while True:
-    sleep(5)
-    try:
-        elements = driver.find_elements(By.CSS_SELECTOR, '.VkpGBb')
-        interface = 1
-        if len(elements) == 0:
-            elements = driver.find_elements(By.CSS_SELECTOR, 'div[data-test-id="organic-list-card"]')
-            interface = 2
-        if len(elements)==0:
-            print('No results found')
-            break
+    area_label = tk.Label(main_window, text='Area:')
+    area_label.grid(row=1, column=0, padx=10, pady=10, sticky='e')
+    area_entry = tk.Entry(main_window, width=30)
+    area_entry.grid(row=1, column=1, columnspan=2, padx=10, pady=10)
 
-        print('interface:',interface)
+    # create a submit button
+    def submit():
 
-        for element in elements:
-            try:
-                getDetails(element, interface)
-            except Exception as e:
-                print
+        niche = niche_entry.get()
+        area = area_entry.get()
+        term= f'{niche} near {area}'
 
-        # if interface==1:
-        #     driver.find_element(By.ID, 'pnnext').click()
-    except:
-        try:
-            text = driver.find_element(By.ID, 'search').text
-            if 'no results' in text:
-                print(f'Search complete for {location}, go check the CSV file!!')
-                break
-        except Exception as e:
-            print('Program terminated de to :\n',e)
-    break
+        main_window.destroy()
+        wait_screen(term)
+
+
+    submit_button = tk.Button(main_window, text='Submit', command=submit, width=10)
+    submit_button.grid(row=2, column=1, padx=10, pady=10)
+
+    # increase distance between lines
+    for i in range(8):
+        main_window.grid_rowconfigure(i, minsize=20)
+
+    # start the main event loop
+    main_window.mainloop()
+
+def wait_screen(term):
+    # create a new window for the wait screen
+    wait_window = tk.Tk()
+    wait_window.title('Scarapping')
+    wait_window.geometry('300x100')
+
+    # create a label for the wait screen
+    wait_label = tk.Label(wait_window, text='Please wait while we are scrapping...')
+    wait_label.pack(padx=10, pady=10)
+
+    threading.Thread(target=startScraping, args=(term,), daemon=True).start()
+
+    while threading.active_count()>1:
+        wait_window.update()
+        sleep(0.1)
+
+    wait_window.destroy()
+    Extract_mail_Screen()
+
+
+def Extract_mail_Screen():
+    main_window = tk.Tk()
+    main_window.title('Mail Extractor')
+    main_window.geometry('300x200')
+
+    # show scrapping status
+    status_label = tk.Label(main_window, text='Scrapping completed', width=15)
+    status_label.grid(row=0, column=0,columnspan=3, padx=10, pady=10)
+    # show scrapping status
+    text_label = tk.Label(main_window, text='Do you want to get the emails ?')
+    text_label.grid(row=1, column=0, columnspan=3,padx=10, pady=10)
+
+    # create a selection field for deepdive
+    deepdive_label = tk.Label(main_window, text='Deepdive:', width=10)
+    deepdive_label.grid(row=3, column=0, padx=10, pady=10)
+
+    deepdive_var = tk.StringVar(value='off')
+    deepdive_options = ['off', 'auto', 'on']
+    deepdive_menu = tk.OptionMenu(main_window, deepdive_var, *deepdive_options)
+    deepdive_menu.grid(row=3, column=1, padx=10, pady=10)
+
+    # create a button to get emails
+    def get_emails_button():
+        deepdive = deepdive_var.get()
+        main_window.destroy()
+        Extract_mail_wait_Screen(deepdive)
+
+    get_emails_button = tk.Button(main_window, text='Get Emails', command=get_emails_button)
+    get_emails_button.grid(row=3, column=2, padx=10, pady=10)
+
+    # increase distance between lines
+    for i in range(7):
+        main_window.grid_rowconfigure(i, minsize=10)
+
+
+def Extract_mail_wait_Screen(deepdive):
+    wait_window = tk.Tk()
+    wait_window.title('Extracting Emails')
+    wait_window.geometry('300x100')
+
+    # create a label for the wait screen
+    wait_label = tk.Label(wait_window, text='Please wait while we are trying to scrape email...')
+    wait_label.pack(padx=10, pady=10)
+
+    threading.Thread(target=get_emails, args=(deepdive,), daemon=True).start()
+
+    while threading.active_count()>1:
+        wait_window.update()
+        sleep(0.1)
+
+    wait_window.destroy()
+    final_screen()
+
+def final_screen():
+    # create a new window for the final screen
+    final_window = tk.Tk()
+    final_window.title('Done')
+    final_window.geometry('250x100')
+
+    # create a label for the final screen
+    final_label = tk.Label(final_window, text='Scraping complete!')
+    final_label.pack(padx=10, pady=10)
+
+    # schedule the window to be destroyed after 3 seconds
+    final_window.after(30000, final_window.destroy)
+
+    # start the main event loop for the final screen
+    final_window.mainloop()
+
+
+# create a login window
+login_window = tk.Tk()
+login_window.title('Login')
+login_window.geometry('350x150')
+
+# create input fields for email and password
+email_label = tk.Label(login_window, text='Email:', width=10)
+email_label.grid(row=0, column=0, padx=10, pady=10)
+email_entry = tk.Entry(login_window, width=30)
+email_entry.grid(row=0, column=1, padx=10, pady=10)
+
+password_label = tk.Label(login_window, text='Password:', width=10)
+password_label.grid(row=1, column=0, padx=10, pady=10)
+password_entry = tk.Entry(login_window, show='*', width=30)
+password_entry.grid(row=1, column=1, padx=10, pady=10)
+
+# create a login button
+login_button = tk.Button(login_window, text='Login', command=login)
+login_button.grid(row=2, column=1, padx=10, pady=10)
+
+def create_account():
+    # open example.com in a web browser
+    webbrowser.open('https://example.com')
+# create a create account button
+create_account_button = tk.Button(login_window, text='Create Account', command=create_account)
+create_account_button.grid(row=2, column=0, padx=10, pady=10)
+
+# start the login event loop
+login_window.mainloop()
